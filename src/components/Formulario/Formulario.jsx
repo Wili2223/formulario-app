@@ -6,7 +6,7 @@ import './Formulario.css'
 function Formulario() {
     return (
         <>
-            <h2>Formulario de Contacto</h2>
+          
             <form id="form-ejemplo" action="">
                 <label for="nombre">Nombre</label>
                 <input id="nombre" type="text" />
@@ -26,11 +26,11 @@ function Formulario() {
                 <label for="femenino">F</label>
                 <input id="femenino" type="checkbox" />
 
-                <label for="mensaje">mensaje</label>
+                <label for="mensaje">Mensaje</label>
                 <textarea id="mensaje"></textarea>
 
 
-                <button>enviar</button>
+                <button>Enviar</button>
             </form>
         </>
     )

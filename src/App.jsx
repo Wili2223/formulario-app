@@ -1,24 +1,24 @@
 import { useState } from 'react'
 import './App.css'
 import Formulario from './components/Formulario/Formulario.jsx'
+import Header from './components/Header/Header.jsx'
+import Footer from './components/Footer/Footer.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <header class="title">
-        <h1>Formularios</h1>
-        <p>En esta sección encontrarás ejemplos de formularios en HTML.</p>
-      </header>
+    <header>
+      <Header />
+    </header>
 
-      <main class="content">
-        <Formulario />
+    <main className="content">
+      <Formulario />
       </main>
 
       <footer>
-        <p>© 2025 Formularios. Todos los derechos reservados.</p>
-        <p>Desarrollado por Williams Valle</p>
+        <Footer />
       </footer>
 
     </>
