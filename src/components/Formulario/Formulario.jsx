@@ -1,39 +1,124 @@
-import React from 'react'
-import './Formulario.css'
-
-
+import React, { useState } from 'react';
+import './Formulario.css';
 
 function Formulario() {
-    return (
-        <>
-          
-            <form id="form-ejemplo" action="">
-                <label for="nombre">Nombre</label>
-                <input id="nombre" type="text" />
+  // 1. Hook de estado para manejar los datos del formulario.
+  const [formData, setFormData] = useState({
+    nombre: '',
+    email: '',
+    password: '',
+    edad: '',
+    masculino: false,
+    femenino: false,
+    mensaje: '',
+  });
 
-                <label for="email">Gmail</label>
-                <input id="email" type="email" />
+  // 2. Hook de estado para manejar el color de fondo.
+  const [backgroundColor, setBackgroundColor] = useState('');
 
-                <label for="password">Contraseña</label>
-                <input id="password" type="password" />
+  // 3. Función para manejar los cambios en los inputs.
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: type === 'checkbox' ? checked : value,
+    }));
+  };
 
-                <label for="edad">Edad</label>
-                <input id="edad" type="number" />
+  // 4. Función para manejar el envío del formulario.
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(`Datos enviados:\n${JSON.stringify(formData, null, 2)}`);
+    setFormData({
+      nombre: '',
+      email: '',
+      password: '',
+      edad: '',
+      masculino: false,
+      femenino: false,
+      mensaje: '',
+    });
+  };
 
-                <label for="masculino">M</label>
-                <input id="masculino" type="checkbox" />
+  // 5. Función para cambiar el color de fondo.
+  const changeBackgroundColor = () => {
+    const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+    setBackgroundColor(randomColor);
+  };
 
-                <label for="femenino">F</label>
-                <input id="femenino" type="checkbox" />
+  // 6. El JSX (HTML) del componente.
+  return (
+    <main className="content" style={{ backgroundColor: backgroundColor }}>
+      
+      <form id="form-ejemplo" onSubmit={handleSubmit}>
+        <h1 style={{ color: 'red' }}>Formulario de Contacto</h1>
+        <label htmlFor="nombre" style={{ color: 'blue' }}>Nombre</label>
+        <input
+          id="nombre"
+          type="text"
+          name="nombre"
+          value={formData.nombre}
+          onChange={handleChange}
+        />
 
-                <label for="mensaje">Mensaje</label>
-                <textarea id="mensaje"></textarea>
+        <label htmlFor="email">Gmail</label>
+        <input
+          id="email"
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+        />
 
+        <label htmlFor="password">Contraseña</label>
+        <input
+          id="password"
+          type="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+        />
 
-                <button>Enviar</button>
-            </form>
-        </>
-    )
+        <label htmlFor="edad">Edad</label>
+        <input
+          id="edad"
+          type="number"
+          name="edad"
+          value={formData.edad}
+          onChange={handleChange}
+        />
+
+        <label htmlFor="masculino">M</label>
+        <input
+          id="masculino"
+          type="checkbox"
+          name="masculino"
+          checked={formData.masculino}
+          onChange={handleChange}
+        />
+
+        <label htmlFor="femenino">F</label>
+        <input
+          id="femenino"
+          type="checkbox"
+          name="femenino"
+          checked={formData.femenino}
+          onChange={handleChange}
+        />
+
+        <label htmlFor="mensaje">mensaje</label>
+        <textarea
+          id="mensaje"
+          name="mensaje"
+          value={formData.mensaje}
+          onChange={handleChange}
+        />
+
+        <button type="submit">enviar</button>
+        <button type="button" onClick={changeBackgroundColor}>Cambiar fondo</button>
+      </form>
+    </main>
+  );
 }
 
-export default Formulario
+export default Formulario;
