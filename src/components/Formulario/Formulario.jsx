@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import './Formulario.css';
 
+
 function Formulario() {
+  
   // 1. Hook de estado para manejar los datos del formulario.
   const [formData, setFormData] = useState({
     nombre: '',
@@ -48,10 +50,10 @@ function Formulario() {
 
   // 6. El JSX (HTML) del componente.
   return (
-    <main className="content" style={{ backgroundColor: backgroundColor }}>
-      
-      <form id="form-ejemplo" onSubmit={handleSubmit}>
-        <h1 style={{ color: 'red' }}>Formulario de Contacto</h1>
+    <main className="content" >
+
+      <form id="form-ejemplo" onSubmit={handleSubmit} style={{ backgroundColor: backgroundColor}}>
+        
         <label htmlFor="nombre" style={{ color: 'blue' }}>Nombre</label>
         <input
           id="nombre"
